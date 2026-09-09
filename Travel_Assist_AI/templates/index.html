@@ -1,0 +1,10 @@
+<!DOCTYPE html><html><head><title>Chatbot</title></head>
+<body><h2>AI Chatbot</h2><input id='m'><button onclick='s()'>Send</button>
+<div id='c'></div>
+<script>
+async function s(){
+let m=document.getElementById('m').value;
+let r=await fetch('/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:m})});
+let d=await r.json(); document.getElementById('c').innerHTML += '<p><b>You:</b> '+m+'</p><p><b>Bot:</b> '+d.reply+'</p>';
+}
+</script></body></html>
